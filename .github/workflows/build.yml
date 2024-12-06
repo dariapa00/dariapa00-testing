@@ -1,0 +1,27 @@
+name: Build Mod
+
+on:
+  push:
+    branches:
+      - main  # 기본 브랜치 이름에 맞게 설정
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'  # 원하는 JDK 버전
+    - name: Build with Gradle
+      run: ./gradlew build  # gradlew 명령어로 빌드
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: mod-jar
+        path: build/libs/*.jar  # 빌드된 .jar 파일
