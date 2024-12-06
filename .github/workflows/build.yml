@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Ubuntu 버전 설정 (필요시 'ubuntu-24.04'로 변경)
+    runs-on: ubuntu-24.04  # ubuntu-24.04로 명시적으로 설정
     steps:
     - name: Checkout code
       uses: actions/checkout@v3  # v3로 업데이트
@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v3  # v3로 업데이트
       with:
         java-version: '17'  # 원하는 JDK 버전
-        distribution: 'openjdk'  # openjdk 배포판 설정
+        distribution: 'temurin'  # openjdk 대신 temurin 사용
     - name: Build with Gradle
       run: ./gradlew build  # gradlew 명령어로 빌드
     - name: Upload Artifacts
