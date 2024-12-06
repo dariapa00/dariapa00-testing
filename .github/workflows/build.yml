@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v3  # v3로 업데이트
       with:
         java-version: '17'  # 원하는 JDK 버전
-        distribution: 'adoptopenjdk'  # JDK 배포판을 명시적으로 지정
+        distribution: 'adoptium'  # 올바른 JDK 배포판 설정
     - name: Build with Gradle
       run: ./gradlew build  # gradlew 명령어로 빌드
     - name: Upload Artifacts
